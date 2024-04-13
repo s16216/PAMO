@@ -1,17 +1,16 @@
 package com.example.bmiapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.RadioGroup;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-
-    EditText height, weight;
-    TextView resulText;
-    String calculation, BMIresult;
+    EditText height, weight, age;
+    private RadioGroup genderView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
         height = findViewById(R.id.height);
         weight = findViewById(R.id.weight);
-        resulText = findViewById(R.id.result);
+        age = findViewById(R.id.age);
+        genderView = findViewById(R.id.genderView);
     }
 
     public void calculateBMI(View view) {
@@ -29,22 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
         float heightValue = Float.parseFloat(value1);
         float weightValue = Float.parseFloat(value2);
+        int ageValue = Integer.parseInt(age.getText().toString());
 
-        float BMI = weightValue / ((heightValue/100) * (heightValue/100));
+        boolean isMale = genderView.getCheckedRadioButtonId() == R.id.genderMale;
 
-        if(BMI < 16){
-            BMIresult = "Start eating";
-        } else if(BMI < 18.5){
-            BMIresult = "Underweight";
-        } else if(BMI < 25){
-            BMIresult = "Normal Weight";
-        } else if(BMI < 30){
-            BMIresult = "You are too FAT!";
-        } else {
-            BMIresult = "Stop eating!";
-        }
-
-        calculation = "Result:\n\n" + BMI + "\n" + BMIresult;
-        resulText.setText(calculation);
+        Intent intent = new Intent(this, ResultActivity.class);
+        intent.putExtra("h", heightValue);
+        intent.putExtra("w", weightValue);
+        intent.putExtra("isMale", isMale);
+        intent.putExtra("age", ageValue);
+        startActivity(intent);
     }
 }
