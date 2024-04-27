@@ -2,7 +2,7 @@ local.properties
 
 .idea/
 build/
-gradle/
+
 
 *~
 #*.tmp
@@ -21,4 +21,3 @@ proguard-rules.pro
 
 *.log
 
-**/tests/
