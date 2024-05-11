@@ -1,6 +1,8 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -27,9 +29,15 @@ class ResultActivity : AppCompatActivity() {
         caloriesTxt.text = calories.toString() + ""
 
         val generator = FeedSuggestionGenerator()
-        val feed = generator.generateFeed(bmi)
 
-        val feedTxt = findViewById<TextView>(R.id.feedTxt)
-        feedTxt.text = feed
+        val feedRecipes = generator.generateFeed(bmi)
+
+        val listView = findViewById<ListView>(R.id.recipeListView)
+        val recipesList = feedRecipes.map { it.joinToString(", ") }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, recipesList)
+        listView.adapter = adapter
+        listView.setOnItemClickListener { _, _, position, _ ->
+            // Handle click
+        }
     }
 }

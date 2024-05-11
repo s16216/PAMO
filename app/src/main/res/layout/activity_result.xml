@@ -51,14 +51,31 @@
         android:textSize="26sp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/feedTxt"
+<!--    <TextView-->
+<!--        android:id="@+id/feedTxt"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginHorizontal="32dp"-->
+<!--        android:ems="6"-->
+<!--        android:textAlignment="center"-->
+<!--        tools:text="feed" />-->
+
+    /////
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center_horizontal"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="Feed Recommendation"-->
+<!--        android:textSize="26sp"-->
+<!--        android:textStyle="bold" />-->
+
+    <ListView
+        android:id="@+id/recipeListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginHorizontal="32dp"
-        android:ems="6"
-        android:textAlignment="center"
-        tools:text="feed" />
+        android:layout_marginHorizontal="16dp" />
 
 </LinearLayout>
