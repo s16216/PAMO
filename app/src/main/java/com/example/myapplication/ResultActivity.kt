@@ -1,7 +1,10 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -34,10 +37,13 @@ class ResultActivity : AppCompatActivity() {
 
         val listView = findViewById<ListView>(R.id.recipeListView)
         val recipesList = feedRecipes.map { it.joinToString(", ") }
+
         val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, recipesList)
         listView.adapter = adapter
         listView.setOnItemClickListener { _, _, position, _ ->
-            // Handle click
+            val intent = Intent(this@ResultActivity, IngredientsActivity::class.java)
+            intent.putExtra("ingredients", feedRecipes[position].toTypedArray())
+            startActivity(intent)
         }
     }
 }
