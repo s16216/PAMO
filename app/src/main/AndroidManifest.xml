@@ -44,6 +44,9 @@
         <activity android:name=".IngredientsActivity">
         </activity>
 
+        <activity android:name=".ChartActivity" />
+
+
     </application>
 
 </manifest>
